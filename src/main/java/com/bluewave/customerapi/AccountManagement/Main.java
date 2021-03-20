@@ -18,12 +18,12 @@ public class Main implements HttpFunction {
 	// }
 
 	@Override
-	public void service(HttpRequest request, HttpResponse response) throws IOException {
+	public void service(HttpRequest httpRequest, HttpResponse httpResponse) throws IOException {
 		get(new Route("/accounts/1001") {
 			@Override
 			public Object handle(Request request, Response response) {
 				// return  "Account: number=1001, name=John Doe, email=johndoe@gmail.com";
-				BufferedWriter writer = response.getWriter();
+				BufferedWriter writer = httpResponse.getWriter();
 				writer.write("1001");
 			}
 		});
