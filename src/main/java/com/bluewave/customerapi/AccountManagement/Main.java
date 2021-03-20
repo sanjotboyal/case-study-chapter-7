@@ -13,57 +13,19 @@ import spark.Response;
 import spark.Route;
 
 public class Main implements HttpFunction {
-	// public static void main(String[] args) {
-	// 	get("/test", (request, response) -> {
-	// 		return "Go Away!!!";
-	// 	});
-	// }
-
+	
+	/* Implemented Google Cloud Functions */
 	@Override
 	public void service(HttpRequest request, HttpResponse response) throws IOException {
-		// BufferedWriter writer = httpResponse.getWriter();
-		// writer.write("1001");
 
-		String requestText = request.getPath();
-		BufferedWriter writer = response.getWriter();
-		writer.write(requestText);
-
+		/* Spark HTTP framework doesn't work with google cloud functions */
 		// get(new Route("/accounts/1001") {
 		// 	@Override
 		// 	public Object handle(Request request, Response response) {
-		// 		try {
-		// 			BufferedWriter writer = httpResponse.getWriter();
-		// 			writer.write("1002");
-		// 		} catch (IOException e) {
-		// 		}
-		// 		return  "Account: number=1001, name=John Doe, email=johndoe@gmail.com";
-		// 	}
-		// });
-
-
-		// get(new Route("/accounts/1001") {
-		// 	@Override
-		// 	public Object handle(Request request, Response response) {
-		// 		try {
-		// 			BufferedWriter writer = httpResponse.getWriter();
-		// 			writer.write("1002");
-		// 		} catch (IOException e) {
-		// 		}
 		// 		return  "Account: number=1001, name=John Doe, email=johndoe@gmail.com";
 		// 	}
 		// });
 		
-		// get(new Route("/accounts/1001") {
-		// 	@Override
-		// 	public Object handle(Request request, Response response) {
-		// 		try {
-		// 			BufferedWriter writer = httpResponse.getWriter();
-		// 			writer.write("1002");
-		// 		} catch (IOException e) {
-		// 		}
-		// 		return  "Account: number=1001, name=John Doe, email=johndoe@gmail.com";
-		// 	}
-		// });
 		
 		// get(new Route("/accounts/1002") {
 		// 	@Override
@@ -71,5 +33,23 @@ public class Main implements HttpFunction {
 		// 		return  "Account: number=1002, name=Jane Smith, email=janesmith@gmail.com";
 		// 	}
 		// });
+
+		// writing http responses 
+		BufferedWriter writer = response.getWriter();
+
+		String route = request.getPath();
+
+		// handling different routes based on account id 
+		switch(route) {
+			case "1001":
+				writer.write("Account: number=1001, name=John Doe, email=johndoe@gmail.com");
+				break;
+			case "1002":
+				writer.write("Account: number=1002, name=Jane Smith, email=janesmith@gmail.com");
+				break;
+			default: 
+				writer.write("Invalid account ID");
+				break;
+		}
 	}
 }
