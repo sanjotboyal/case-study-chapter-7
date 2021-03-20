@@ -19,20 +19,20 @@ public class Main implements HttpFunction {
 
 	@Override
 	public void service(HttpRequest httpRequest, HttpResponse httpResponse) throws IOException {
-		BufferedWriter writer = httpResponse.getWriter();
-		writer.write("1001");
+		// BufferedWriter writer = httpResponse.getWriter();
+		// writer.write("1001");
 
-		get(new Route("/accounts/1001") {
-			@Override
-			public Object handle(Request request, Response response) {
-				try {
-					BufferedWriter writer = httpResponse.getWriter();
-					writer.write("1002");
-				} catch (IOException e) {
-				}
-				return  "Account: number=1001, name=John Doe, email=johndoe@gmail.com";
-			}
-		});
+		// get(new Route("/accounts/1001") {
+		// 	@Override
+		// 	public Object handle(Request request, Response response) {
+		// 		try {
+		// 			BufferedWriter writer = httpResponse.getWriter();
+		// 			writer.write("1002");
+		// 		} catch (IOException e) {
+		// 		}
+		// 		return  "Account: number=1001, name=John Doe, email=johndoe@gmail.com";
+		// 	}
+		// });
 
         get("/hello", (request, response) -> "Hello World!");
 		
