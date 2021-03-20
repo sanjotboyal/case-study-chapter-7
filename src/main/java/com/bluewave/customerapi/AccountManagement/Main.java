@@ -21,7 +21,9 @@ public class Main implements HttpFunction {
 		get(new Route("/accounts/1001") {
 			@Override
 			public Object handle(Request request, Response response) {
-				return  "Account: number=1001, name=John Doe, email=johndoe@gmail.com";
+				// return  "Account: number=1001, name=John Doe, email=johndoe@gmail.com";
+				BufferedWriter writer = response.getWriter();
+				writer.write("1001");
 			}
 		});
 		
