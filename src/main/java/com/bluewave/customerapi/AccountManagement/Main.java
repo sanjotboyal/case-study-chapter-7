@@ -41,10 +41,10 @@ public class Main implements HttpFunction {
 
 		// handling different routes based on account id 
 		switch(route) {
-			case "1001":
+			case "/1001":
 				writer.write("Account: number=1001, name=John Doe, email=johndoe@gmail.com");
 				break;
-			case "1002":
+			case "/1002":
 				writer.write("Account: number=1002, name=Jane Smith, email=janesmith@gmail.com");
 				break;
 			default: 
