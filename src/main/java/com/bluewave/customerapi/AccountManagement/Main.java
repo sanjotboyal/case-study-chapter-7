@@ -20,9 +20,13 @@ public class Main implements HttpFunction {
 	// }
 
 	@Override
-	public void service(HttpRequest httpRequest, HttpResponse httpResponse) throws IOException {
+	public void service(HttpRequest request, HttpResponse response) throws IOException {
 		// BufferedWriter writer = httpResponse.getWriter();
 		// writer.write("1001");
+
+		String requestText = request.getUri();
+		BufferedWriter writer = response.getWriter();
+		writer.write(requestText);
 
 		// get(new Route("/accounts/1001") {
 		// 	@Override
@@ -36,9 +40,6 @@ public class Main implements HttpFunction {
 		// 	}
 		// });
 
-		get("/test", (request, response) -> {
-			return "test1";
-		});
 
 		// get(new Route("/accounts/1001") {
 		// 	@Override
@@ -52,12 +53,6 @@ public class Main implements HttpFunction {
 		// 	}
 		// });
 		
-		get("/test2", (request, response) -> {
-			BufferedWriter writer = httpResponse.getWriter();
-			writer.write("test2");
-			return "Test3";
-		});
-
 		// get(new Route("/accounts/1001") {
 		// 	@Override
 		// 	public Object handle(Request request, Response response) {
