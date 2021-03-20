@@ -1,15 +1,22 @@
 package com.bluewave.customerapi.AccountManagement;
 
+import com.google.cloud.functions.HttpFunction;
+import com.google.cloud.functions.HttpRequest;
+import com.google.cloud.functions.HttpResponse;
+
 import static spark.Spark.get;
  
 import spark.Request;
 import spark.Response;
 import spark.Route;
 
-public class Main {
-	public static void main(String[] args) {
-		//		get(new Route("/Accounts/:id") {
+public class Main implements HttpFunction {
+	// public static void main(String[] args) {
+	// 	//		get(new Route("/Accounts/:id") {
+	// }
 
+	@Override
+	public void service(HttpRequest request, HttpResponse response) throws IOException {
 		get(new Route("/accounts/1001") {
 			@Override
 			public Object handle(Request request, Response response) {
