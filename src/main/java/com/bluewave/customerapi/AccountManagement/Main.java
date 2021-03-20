@@ -22,9 +22,14 @@ public class Main implements HttpFunction {
 		get(new Route("/accounts/1001") {
 			@Override
 			public Object handle(Request request, Response response) {
-				// return  "Account: number=1001, name=John Doe, email=johndoe@gmail.com";
-				BufferedWriter writer = httpResponse.getWriter();
-				writer.write("1001");
+				try {
+					BufferedWriter writer = httpResponse.getWriter();
+					writer.write("1001");
+				} catch (IOException e) {
+
+				}
+
+				return  "Account: number=1001, name=John Doe, email=johndoe@gmail.com";
 			}
 		});
 		
