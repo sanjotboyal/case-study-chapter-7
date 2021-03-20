@@ -13,37 +13,55 @@ import spark.Response;
 import spark.Route;
 
 public class Main implements HttpFunction {
-	public static void main(String[] args) {
-		get("/test", (request, response) -> {
-			return "Go Away!!!";
-		});
-	}
-
-	// @Override
-	// public void service(HttpRequest httpRequest, HttpResponse httpResponse) throws IOException {
-	// 	// BufferedWriter writer = httpResponse.getWriter();
-	// 	// writer.write("1001");
-
-	// 	// get(new Route("/accounts/1001") {
-	// 	// 	@Override
-	// 	// 	public Object handle(Request request, Response response) {
-	// 	// 		try {
-	// 	// 			BufferedWriter writer = httpResponse.getWriter();
-	// 	// 			writer.write("1002");
-	// 	// 		} catch (IOException e) {
-	// 	// 		}
-	// 	// 		return  "Account: number=1001, name=John Doe, email=johndoe@gmail.com";
-	// 	// 	}
-	// 	// });
-
-    //     get("/hello", (request, response) -> "Hello World!");
-		
-		
-	// 	// get(new Route("/accounts/1002") {
-	// 	// 	@Override
-	// 	// 	public Object handle(Request request, Response response) {
-	// 	// 		return  "Account: number=1002, name=Jane Smith, email=janesmith@gmail.com";
-	// 	// 	}
-	// 	// });
+	// public static void main(String[] args) {
+	// 	get("/test", (request, response) -> {
+	// 		return "Go Away!!!";
+	// 	});
 	// }
+
+	@Override
+	public void service(HttpRequest httpRequest, HttpResponse httpResponse) throws IOException {
+		// BufferedWriter writer = httpResponse.getWriter();
+		// writer.write("1001");
+
+		// get(new Route("/accounts/1001") {
+		// 	@Override
+		// 	public Object handle(Request request, Response response) {
+		// 		try {
+		// 			BufferedWriter writer = httpResponse.getWriter();
+		// 			writer.write("1002");
+		// 		} catch (IOException e) {
+		// 		}
+		// 		return  "Account: number=1001, name=John Doe, email=johndoe@gmail.com";
+		// 	}
+		// });
+
+		get("/test", (request, response) -> {
+			return "testing";
+		});
+
+		get(new Route("/accounts/1001") {
+			@Override
+			public Object handle(Request request, Response response) {
+				try {
+					BufferedWriter writer = httpResponse.getWriter();
+					writer.write("1002");
+				} catch (IOException e) {
+				}
+				return  "Account: number=1001, name=John Doe, email=johndoe@gmail.com";
+			}
+		});
+		
+		get("/test", (request, response) -> {
+			BufferedWriter writer = httpResponse.getWriter();
+			writer.write("1002");
+		});
+		
+		// get(new Route("/accounts/1002") {
+		// 	@Override
+		// 	public Object handle(Request request, Response response) {
+		// 		return  "Account: number=1002, name=Jane Smith, email=janesmith@gmail.com";
+		// 	}
+		// });
+	}
 }
