@@ -24,7 +24,7 @@ public class Main implements HttpFunction {
 		// BufferedWriter writer = httpResponse.getWriter();
 		// writer.write("1001");
 
-		String requestText = request.getUri();
+		String requestText = request.getPath();
 		BufferedWriter writer = response.getWriter();
 		writer.write(requestText);
 
