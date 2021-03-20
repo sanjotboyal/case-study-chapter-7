@@ -37,25 +37,38 @@ public class Main implements HttpFunction {
 		// });
 
 		get("/test", (request, response) -> {
-			return "testing";
+			return "test1";
 		});
 
-		get(new Route("/accounts/1001") {
-			@Override
-			public Object handle(Request request, Response response) {
-				try {
-					BufferedWriter writer = httpResponse.getWriter();
-					writer.write("1002");
-				} catch (IOException e) {
-				}
-				return  "Account: number=1001, name=John Doe, email=johndoe@gmail.com";
-			}
-		});
+		// get(new Route("/accounts/1001") {
+		// 	@Override
+		// 	public Object handle(Request request, Response response) {
+		// 		try {
+		// 			BufferedWriter writer = httpResponse.getWriter();
+		// 			writer.write("1002");
+		// 		} catch (IOException e) {
+		// 		}
+		// 		return  "Account: number=1001, name=John Doe, email=johndoe@gmail.com";
+		// 	}
+		// });
 		
-		get("/test", (request, response) -> {
+		get("/test2", (request, response) -> {
 			BufferedWriter writer = httpResponse.getWriter();
-			writer.write("1002");
+			writer.write("test2");
+			return "Test3";
 		});
+
+		// get(new Route("/accounts/1001") {
+		// 	@Override
+		// 	public Object handle(Request request, Response response) {
+		// 		try {
+		// 			BufferedWriter writer = httpResponse.getWriter();
+		// 			writer.write("1002");
+		// 		} catch (IOException e) {
+		// 		}
+		// 		return  "Account: number=1001, name=John Doe, email=johndoe@gmail.com";
+		// 	}
+		// });
 		
 		// get(new Route("/accounts/1002") {
 		// 	@Override
