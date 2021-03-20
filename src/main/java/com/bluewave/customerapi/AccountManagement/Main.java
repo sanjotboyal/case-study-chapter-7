@@ -34,7 +34,7 @@ public class Main implements HttpFunction {
 			}
 		});
 
-		get("/test", (request, response) -> {
+		get(new Route("/test"), (request, response) -> {
 			return "Test";
 		});
 		
